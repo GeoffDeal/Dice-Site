@@ -1,0 +1,23 @@
+body{
+    background-color: black;
+    color: blanchedalmond;
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+}
+.displayBox {
+    background-color: blanchedalmond;
+    color: black;
+    margin: auto;
+    display: none;
+    width: 600px;
+}
+#displayResult{
+    background-color: blanchedalmond;
+    color: black;
+    width: 250px;
+    font-size: xx-large;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

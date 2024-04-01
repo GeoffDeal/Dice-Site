@@ -4,17 +4,32 @@ function randomResult (max) {
     return Math.floor(Math.random() * max) + 1;
 }
 
-// Scattegories Dice
+// Select Dice Pool
+
+const selector = document.getElementById('selectionBox');
+selector.addEventListener("change", function (event) {
+    let selectedDiv = event.target.value;
+    displaySwitch(selectedDiv);
+})
+
+function displaySwitch (div) {
+    divList = document.getElementsByClassName('displayBox');
+    for (let i = 0; i < divList.length; i++) {
+        divList[i].style.display = "none";
+    }
+    document.getElementById(div).style.display = "block";
+}
+
+// Scattergories Dice
 
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'W'];
 
 function rollScattergories () {
-    let letterResult = letters[randomResult(20)];
-    console.log(letterResult);
+    let letterResult = letters[randomResult(20) - 1];
     let indexCard = randomResult(12);
-    console.log(indexCard);
+    document.getElementById('displayResult').innerHTML = indexCard + ' ' + '"' + letterResult + '"';
 }
-// rollScattergories();
+rollScattergories();
 
 // Royal Game of Ur
 
@@ -26,6 +41,6 @@ function rollUr () {
             moves += 1
         }
     }
-    console.log(moves);
+    document.getElementById('displayResult').innerHTML = moves;
 }
 // rollUr();
