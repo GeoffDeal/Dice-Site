@@ -30,16 +30,19 @@ document.getElementById('scattergoriesBoth').addEventListener("click", rollScatt
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'W'];
 
 function rollScattergoriesLetter () {
+    moveResults();
     let letterResult = letters[randomResult(20) - 1];
     document.getElementById('displayResult').innerHTML = letterResult;
 }
 
 function rollScattergories12 () {
+    moveResults();
     let indexCard = randomResult(12);
     document.getElementById('displayResult').innerHTML = indexCard;
 }
 
 function rollScattergoriesBoth () {
+    moveResults();
     let letterResult = letters[randomResult(20) - 1];
     let indexCard = randomResult(12);
     document.getElementById('displayResult').innerHTML = indexCard + '   ' + letterResult;
@@ -61,5 +64,11 @@ function rollUr () {
 // Track past results
 
 function moveResults () {
-    
+    let result = document.getElementById('displayResult').innerHTML;
+    if (result !== 'Awaiting a roll') {
+        let pastResult = document.createElement('p');
+        let pastDisplay = document.getElementById('displayPrevious');
+        pastDisplay.prepend(pastResult);
+        pastResult.innerHTML = result;
+    }
 }
