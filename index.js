@@ -22,14 +22,28 @@ function displaySwitch (div) {
 
 // Scattergories Dice
 
+document.getElementById('scattergoriesLetter').addEventListener("click", rollScattergoriesLetter);
+document.getElementById('scattergories12').addEventListener("click", rollScattergories12);
+document.getElementById('scattergoriesBoth').addEventListener("click", rollScattergoriesBoth);
+
+
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'W'];
 
-function rollScattergories () {
+function rollScattergoriesLetter () {
+    let letterResult = letters[randomResult(20) - 1];
+    document.getElementById('displayResult').innerHTML = letterResult;
+}
+
+function rollScattergories12 () {
+    let indexCard = randomResult(12);
+    document.getElementById('displayResult').innerHTML = indexCard;
+}
+
+function rollScattergoriesBoth () {
     let letterResult = letters[randomResult(20) - 1];
     let indexCard = randomResult(12);
-    document.getElementById('displayResult').innerHTML = indexCard + ' ' + '"' + letterResult + '"';
+    document.getElementById('displayResult').innerHTML = indexCard + '   ' + letterResult;
 }
-rollScattergories();
 
 // Royal Game of Ur
 
@@ -43,4 +57,9 @@ function rollUr () {
     }
     document.getElementById('displayResult').innerHTML = moves;
 }
-// rollUr();
+
+// Track past results
+
+function moveResults () {
+    
+}
