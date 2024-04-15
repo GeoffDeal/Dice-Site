@@ -50,7 +50,10 @@ function rollScattergoriesBoth () {
 
 // Royal Game of Ur
 
+document.getElementById('urButton').addEventListener("click", rollUr);
+
 function rollUr () {
+    moveResults();
     let moves = 0;
     for (let i = 0; i < 4; i++) {
         let result = randomResult(2);
@@ -59,6 +62,23 @@ function rollUr () {
         }
     }
     document.getElementById('displayResult').innerHTML = moves;
+}
+
+// Dice pool
+
+document.getElementById('dicePool').addEventListener("click", rollPool);
+
+function rollPool () {
+    moveResults();
+    let diceNumber = document.getElementById('diceAmount').value;
+    let diceSides = document.getElementById('sideAmount').value;
+    let sum = 0;
+    for (let i = 0; i < diceNumber; i++) {
+        let result = randomResult(diceSides);
+        sum += result;
+    }
+    document.getElementById('displayResult').innerHTML = sum;
+
 }
 
 // Track past results
