@@ -81,6 +81,32 @@ function rollPool () {
 
 }
 
+// DnD/DCC
+
+document.getElementById('dndAdv').addEventListener("click", rollAdvantage);
+
+const diceButtons = document.getElementsByClassName('polyButton');
+for (i = 0; i < diceButtons.length; i++) {
+    let sides = diceButtons[i].id
+    diceButtons[i].addEventListener("click", () => {
+        rollSides(sides);
+    })
+}
+
+function rollSides (sides) {
+    moveResults();
+    let result = randomResult(sides)
+    document.getElementById('displayResult').innerHTML = result;
+}
+
+function rollAdvantage () {
+    moveResults();
+    let resultOne = randomResult(20);
+    let resultTwo = randomResult(20);
+    let resultDisplay = resultOne + ' | ' + resultTwo;
+    document.getElementById('displayResult').innerHTML = resultDisplay;
+}
+
 // Track past results
 
 function moveResults () {
