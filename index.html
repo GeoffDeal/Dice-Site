@@ -12,10 +12,10 @@
     <div id="resultBox">
         <img src="images/transparentdice.png" class="resultDisplay" id="startImage"/>
     </div>
-    <!-- <p id="displayResult" class="resultDisplay">Awaiting a roll</p> -->
     <div id="selectionBox">
         <label for="games">Choose your dice set:</label>
-        <select id="games" name="cars">
+        <select id="games" autocomplete="off">
+            <option value="" selected>--Select Your Dice--</option>
             <option value="variable">Dice Pool</option>
             <option value="ur">The Royal Game of Ur</option>
             <option value="scattergories">Scattergories</option>
