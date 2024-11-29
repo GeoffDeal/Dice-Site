@@ -24,13 +24,17 @@ body{
     margin: 8px;
 }
 .resultDisplay{
+    display: flex;
     background-color: blanchedalmond;
     color: rgb(66, 60, 60);
-    width: 250px;
+    width: 150px;
+    height: 150px;
     font-size: xx-large;
     margin: auto;
     margin-top: 24px;
     margin-bottom: 24px;
     border-radius: 16px;
     padding: 24px;
+    align-items: center;
+    justify-content: center;
 }

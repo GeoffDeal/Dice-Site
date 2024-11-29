@@ -4,6 +4,19 @@ function randomResult (max) {
     return Math.floor(Math.random() * max) + 1;
 }
 
+// Replace Image
+
+function replaceImage () {
+    if (document.getElementById('startImage')) {
+        const resultBox = document.getElementById('resultBox');
+        const image = document.getElementById('startImage');
+        const resultText = document.createElement('p');
+        resultText.className = 'resultDisplay';
+        resultText.id = 'displayResult';
+        resultBox.replaceChild(resultText, image);
+    }
+}
+
 // Select Dice Pool
 
 const selector = document.getElementById('selectionBox');
@@ -32,12 +45,14 @@ const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 function rollScattergoriesLetter () {
     moveResults();
     let letterResult = letters[randomResult(20) - 1];
+    replaceImage();
     document.getElementById('displayResult').innerHTML = letterResult;
 }
 
 function rollScattergories12 () {
     moveResults();
     let indexCard = randomResult(12);
+    replaceImage();
     document.getElementById('displayResult').innerHTML = indexCard;
 }
 
@@ -45,6 +60,7 @@ function rollScattergoriesBoth () {
     moveResults();
     let letterResult = letters[randomResult(20) - 1];
     let indexCard = randomResult(12);
+    replaceImage();
     document.getElementById('displayResult').innerHTML = indexCard + '   ' + letterResult;
 }
 
@@ -61,6 +77,7 @@ function rollUr () {
             moves += 1
         }
     }
+    replaceImage();
     document.getElementById('displayResult').innerHTML = moves;
 }
 
@@ -77,6 +94,7 @@ function rollPool () {
         let result = randomResult(diceSides);
         sum += result;
     }
+    replaceImage();
     document.getElementById('displayResult').innerHTML = sum;
 
 }
@@ -96,6 +114,7 @@ for (i = 0; i < diceButtons.length; i++) {
 function rollSides (sides) {
     moveResults();
     let result = randomResult(sides)
+    replaceImage();
     document.getElementById('displayResult').innerHTML = result;
 }
 
@@ -104,14 +123,15 @@ function rollAdvantage () {
     let resultOne = randomResult(20);
     let resultTwo = randomResult(20);
     let resultDisplay = resultOne + ' | ' + resultTwo;
+    replaceImage();
     document.getElementById('displayResult').innerHTML = resultDisplay;
 }
 
 // Track past results
 
 function moveResults () {
-    let result = document.getElementById('displayResult').innerHTML;
-    if (result !== 'Awaiting a roll') {
+    if (document.getElementById('displayResult')) {
+        result = document.getElementById('displayResult').innerHTML;
         let pastResult = document.createElement('p');
         let pastDisplay = document.getElementById('displayPrevious');
         pastDisplay.prepend(pastResult);
