@@ -70,15 +70,20 @@ document.getElementById('urButton').addEventListener("click", rollUr);
 
 function rollUr () {
     moveResults();
+    const results = [];
     let moves = 0;
     for (let i = 0; i < 4; i++) {
         let result = randomResult(2);
         if (result === 2) {
+            results.push('\u25CF');
             moves += 1
+        } else{
+            results.push('\u25CC')
         }
     }
+    const resultsList = results.join(' ');
     replaceImage();
-    document.getElementById('displayResult').innerHTML = moves;
+    document.getElementById('displayResult').innerHTML = resultsList + '\n' + moves;
 }
 
 // Dice pool
